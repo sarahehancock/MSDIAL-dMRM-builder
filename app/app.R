@@ -6,10 +6,21 @@
 # Input : MS-DIAL alignment result export(s) (tab-delimited .txt), positive
 #         (required) and negative (optional, used only to identify acyl chains).
 # Output: Agilent MassHunter dynamic-MRM transition list (.csv) + annotated table.
+#
+# Source: https://github.com/sarahehancock/MSDIAL-dMRM-builder
+#
+# Copyright (C) 2026 Sarah Hancock
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, version 3. It is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+# or FITNESS FOR A PARTICULAR PURPOSE. See the LICENSE file for details.
 # =============================================================================
 
 library(shiny)
 library(DT)
+
+REPO_URL <- "https://github.com/sarahehancock/MSDIAL-dMRM-builder"
 
 options(shiny.maxRequestSize = 500 * 1024^2)
 
@@ -586,8 +597,11 @@ ui <- fluidPage(
   tags$head(tags$style(HTML("
     body{font-size:13px} .well{padding:12px} h4{margin-top:14px;font-size:14px;font-weight:600}
     .stat{display:inline-block;margin:0 18px 8px 0} .stat b{font-size:20px;display:block}
-    .help-block{font-size:11.5px}"))),
+    .help-block{font-size:11.5px} .lead-in{color:#555;margin:-6px 0 14px}
+    .app-footer{margin:24px 0 16px;padding-top:12px;border-top:1px solid #ddd;color:#666;font-size:12px;line-height:1.7}"))),
   titlePanel("MS-DIAL to Agilent dMRM builder"),
+  tags$p(class = "lead-in", "Builds a positive-mode dynamic MRM transition list for Agilent triple quadrupoles from MS-DIAL lipidomics alignment exports. ",
+         tags$a(href = REPO_URL, target = "_blank", rel = "noopener", "Source code and documentation on GitHub")),
   sidebarLayout(
     sidebarPanel(width = 3,
       fileInput("pos", "Positive MS-DIAL alignment export (required)", accept = c(".txt", ".tsv", ".csv")),
@@ -666,7 +680,15 @@ ui <- fluidPage(
         tabPanel("Rules", br(), htmlOutput("rules"))
       )
     )
-  )
+  ),
+  tags$footer(class = "app-footer",
+    tags$div(tags$b("MSDIAL-dMRM-builder"), " - source code, documentation and updates: ",
+             tags$a(href = REPO_URL, target = "_blank", rel = "noopener", REPO_URL)),
+    tags$div("Found a problem or have a request? ",
+             tags$a(href = paste0(REPO_URL, "/issues"), target = "_blank", rel = "noopener", "Open an issue on GitHub"), "."),
+    tags$div("Copyright 2026 Sarah Hancock. Free software released under the ",
+             tags$a(href = "https://www.gnu.org/licenses/gpl-3.0.html", target = "_blank", rel = "noopener", "GNU General Public License v3.0"),
+             ", with no warranty. Check every transition list against your own instrument and standards before acquiring data."))
 )
 
 # ---- server -----------------------------------------------------------------
