@@ -1,10 +1,11 @@
 # MS-DIAL to Agilent dMRM builder
 
+Repository: [https://github.com/sarahehancock/MSDIAL-dMRM-builder](https://github.com/sarahehancock/MSDIAL-dMRM-builder)
+Github page: [https://sarahehancock.github.io/MSDIAL-dMRM-builder/](https://sarahehancock.github.io/MSDIAL-dMRM-builder/)
+
 A Shiny app that turns MS-DIAL lipidomics alignment results into a positive-mode
 dynamic MRM (dMRM) transition list for an Agilent triple quadrupole, using
 negative-mode data to identify acyl chains.
-
-This app is deployed on GitHub pages at: [https://sarahehancock.github.io/MSDIAL-dMRM-builder/](https://sarahehancock.github.io/MSDIAL-dMRM-builder/)
 
 ## Run it
 
@@ -89,4 +90,4 @@ Shiny needs R to run, so the app cannot be served as plain files. Two options:
 
 ## License
 
-MIT, see `LICENSE`.
+GNU General Public License v3.0, see `LICENSE`. Copyright 2026 Sarah Hancock.
