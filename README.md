@@ -4,6 +4,8 @@ A Shiny app that turns MS-DIAL lipidomics alignment results into a positive-mode
 dynamic MRM (dMRM) transition list for an Agilent triple quadrupole, using
 negative-mode data to identify acyl chains.
 
+This app is deployed on GitHub pages at: [https://sarahehancock.github.io/MSDIAL-dMRM-builder/](https://sarahehancock.github.io/MSDIAL-dMRM-builder/)
+
 ## Run it
 
 ```r
